@@ -11,7 +11,7 @@
 
 use reqwest;
 
-use crate::apis::ResponseContent;
+use crate::{apis::ResponseContent, models::{WaypointType, GetSystemWaypointsTraitsParameter}};
 use super::{Error, configuration};
 
 
