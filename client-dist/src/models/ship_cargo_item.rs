@@ -12,11 +12,10 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipCargoItem {
-    /// The unique identifier of the cargo item type.
     #[serde(rename = "symbol")]
-    pub symbol: String,
+    pub symbol: crate::models::TradeSymbol,
     /// The name of the cargo item type.
     #[serde(rename = "name")]
     pub name: String,
@@ -30,7 +29,7 @@ pub struct ShipCargoItem {
 
 impl ShipCargoItem {
     /// The type of cargo item and the number of units.
-    pub fn new(symbol: String, name: String, description: String, units: i32) -> ShipCargoItem {
+    pub fn new(symbol: crate::models::TradeSymbol, name: String, description: String, units: i32) -> ShipCargoItem {
         ShipCargoItem {
             symbol,
             name,

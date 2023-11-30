@@ -12,11 +12,11 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Agent {
-    /// Account ID that is tied to this agent.
-    #[serde(rename = "accountId")]
-    pub account_id: String,
+    /// Account ID that is tied to this agent. Only included on your own agent.
+    #[serde(rename = "accountId", skip_serializing_if = "Option::is_none")]
+    pub account_id: Option<String>,
     /// Symbol of the agent.
     #[serde(rename = "symbol")]
     pub symbol: String,
@@ -29,17 +29,21 @@ pub struct Agent {
     /// The faction the agent started with.
     #[serde(rename = "startingFaction")]
     pub starting_faction: String,
+    /// How many ships are owned by the agent.
+    #[serde(rename = "shipCount", skip_serializing_if = "Option::is_none")]
+    pub ship_count: Option<i32>,
 }
 
 impl Agent {
     /// Agent details.
-    pub fn new(account_id: String, symbol: String, headquarters: String, credits: i64, starting_faction: String) -> Agent {
+    pub fn new(symbol: String, headquarters: String, credits: i64, starting_faction: String) -> Agent {
         Agent {
-            account_id,
+            account_id: None,
             symbol,
             headquarters,
             credits,
             starting_faction,
+            ship_count: None,
         }
     }
 }

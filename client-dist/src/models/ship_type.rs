@@ -17,6 +17,8 @@ pub enum ShipType {
     Probe,
     #[serde(rename = "SHIP_MINING_DRONE")]
     MiningDrone,
+    #[serde(rename = "SHIP_SIPHON_DRONE")]
+    SiphonDrone,
     #[serde(rename = "SHIP_INTERCEPTOR")]
     Interceptor,
     #[serde(rename = "SHIP_LIGHT_HAULER")]
@@ -33,6 +35,8 @@ pub enum ShipType {
     OreHound,
     #[serde(rename = "SHIP_REFINING_FREIGHTER")]
     RefiningFreighter,
+    #[serde(rename = "SHIP_SURVEYOR")]
+    Surveyor,
 
 }
 
@@ -41,6 +45,7 @@ impl ToString for ShipType {
         match self {
             Self::Probe => String::from("SHIP_PROBE"),
             Self::MiningDrone => String::from("SHIP_MINING_DRONE"),
+            Self::SiphonDrone => String::from("SHIP_SIPHON_DRONE"),
             Self::Interceptor => String::from("SHIP_INTERCEPTOR"),
             Self::LightHauler => String::from("SHIP_LIGHT_HAULER"),
             Self::CommandFrigate => String::from("SHIP_COMMAND_FRIGATE"),
@@ -49,6 +54,7 @@ impl ToString for ShipType {
             Self::LightShuttle => String::from("SHIP_LIGHT_SHUTTLE"),
             Self::OreHound => String::from("SHIP_ORE_HOUND"),
             Self::RefiningFreighter => String::from("SHIP_REFINING_FREIGHTER"),
+            Self::Surveyor => String::from("SHIP_SURVEYOR"),
         }
     }
 }

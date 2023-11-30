@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Contract {
     /// ID of the contract.
     #[serde(rename = "id")]
@@ -22,7 +22,7 @@ pub struct Contract {
     pub faction_symbol: String,
     /// Type of contract.
     #[serde(rename = "type")]
-    pub r#type: RHashType,
+    pub r#type: Type,
     #[serde(rename = "terms")]
     pub terms: Box<crate::models::ContractTerms>,
     /// Whether the contract has been accepted by the agent
@@ -41,7 +41,7 @@ pub struct Contract {
 
 impl Contract {
     /// Contract details.
-    pub fn new(id: String, faction_symbol: String, r#type: RHashType, terms: crate::models::ContractTerms, accepted: bool, fulfilled: bool, expiration: String) -> Contract {
+    pub fn new(id: String, faction_symbol: String, r#type: Type, terms: crate::models::ContractTerms, accepted: bool, fulfilled: bool, expiration: String) -> Contract {
         Contract {
             id,
             faction_symbol,
@@ -57,7 +57,7 @@ impl Contract {
 
 /// Type of contract.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum RHashType {
+pub enum Type {
     #[serde(rename = "PROCUREMENT")]
     Procurement,
     #[serde(rename = "TRANSPORT")]
@@ -66,8 +66,8 @@ pub enum RHashType {
     Shuttle,
 }
 
-impl Default for RHashType {
-    fn default() -> RHashType {
+impl Default for Type {
+    fn default() -> Type {
         Self::Procurement
     }
 }

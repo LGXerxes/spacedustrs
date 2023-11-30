@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipCargo {
     /// The max number of items that can be stored in the cargo hold.
     #[serde(rename = "capacity")]

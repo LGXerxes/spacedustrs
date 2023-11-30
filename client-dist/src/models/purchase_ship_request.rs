@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PurchaseShipRequest {
     #[serde(rename = "shipType")]
     pub ship_type: crate::models::ShipType,

@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DeliverContractRequest {
     /// Symbol of a ship located in the destination to deliver a contract and that has a good to deliver in its cargo.
     #[serde(rename = "shipSymbol")]

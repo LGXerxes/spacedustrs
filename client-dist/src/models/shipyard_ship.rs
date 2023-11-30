@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipyardShip {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub r#type: Option<crate::models::ShipType>,
@@ -20,6 +20,10 @@ pub struct ShipyardShip {
     pub name: String,
     #[serde(rename = "description")]
     pub description: String,
+    #[serde(rename = "supply")]
+    pub supply: crate::models::SupplyLevel,
+    #[serde(rename = "activity", skip_serializing_if = "Option::is_none")]
+    pub activity: Option<crate::models::ActivityLevel>,
     #[serde(rename = "purchasePrice")]
     pub purchase_price: i32,
     #[serde(rename = "frame")]
@@ -32,21 +36,26 @@ pub struct ShipyardShip {
     pub modules: Vec<crate::models::ShipModule>,
     #[serde(rename = "mounts")]
     pub mounts: Vec<crate::models::ShipMount>,
+    #[serde(rename = "crew")]
+    pub crew: Box<crate::models::ShipyardShipCrew>,
 }
 
 impl ShipyardShip {
     /// 
-    pub fn new(name: String, description: String, purchase_price: i32, frame: crate::models::ShipFrame, reactor: crate::models::ShipReactor, engine: crate::models::ShipEngine, modules: Vec<crate::models::ShipModule>, mounts: Vec<crate::models::ShipMount>) -> ShipyardShip {
+    pub fn new(name: String, description: String, supply: crate::models::SupplyLevel, purchase_price: i32, frame: crate::models::ShipFrame, reactor: crate::models::ShipReactor, engine: crate::models::ShipEngine, modules: Vec<crate::models::ShipModule>, mounts: Vec<crate::models::ShipMount>, crew: crate::models::ShipyardShipCrew) -> ShipyardShip {
         ShipyardShip {
             r#type: None,
             name,
             description,
+            supply,
+            activity: None,
             purchase_price,
             frame: Box::new(frame),
             reactor: Box::new(reactor),
             engine: Box::new(engine),
             modules,
             mounts,
+            crew: Box::new(crew),
         }
     }
 }

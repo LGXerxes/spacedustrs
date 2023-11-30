@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransferCargoRequest {
     #[serde(rename = "tradeSymbol")]
     pub trade_symbol: crate::models::TradeSymbol,

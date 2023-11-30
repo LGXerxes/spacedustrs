@@ -11,11 +11,10 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WaypointTrait {
-    /// The unique identifier of the trait.
     #[serde(rename = "symbol")]
-    pub symbol: Symbol,
+    pub symbol: crate::models::WaypointTraitSymbol,
     /// The name of the trait.
     #[serde(rename = "name")]
     pub name: String,
@@ -25,7 +24,7 @@ pub struct WaypointTrait {
 }
 
 impl WaypointTrait {
-    pub fn new(symbol: Symbol, name: String, description: String) -> WaypointTrait {
+    pub fn new(symbol: crate::models::WaypointTraitSymbol, name: String, description: String) -> WaypointTrait {
         WaypointTrait {
             symbol,
             name,
@@ -34,132 +33,4 @@ impl WaypointTrait {
     }
 }
 
-/// The unique identifier of the trait.
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Symbol {
-    #[serde(rename = "UNCHARTED")]
-    Uncharted,
-    #[serde(rename = "MARKETPLACE")]
-    Marketplace,
-    #[serde(rename = "SHIPYARD")]
-    Shipyard,
-    #[serde(rename = "OUTPOST")]
-    Outpost,
-    #[serde(rename = "SCATTERED_SETTLEMENTS")]
-    ScatteredSettlements,
-    #[serde(rename = "SPRAWLING_CITIES")]
-    SprawlingCities,
-    #[serde(rename = "MEGA_STRUCTURES")]
-    MegaStructures,
-    #[serde(rename = "OVERCROWDED")]
-    Overcrowded,
-    #[serde(rename = "HIGH_TECH")]
-    HighTech,
-    #[serde(rename = "CORRUPT")]
-    Corrupt,
-    #[serde(rename = "BUREAUCRATIC")]
-    Bureaucratic,
-    #[serde(rename = "TRADING_HUB")]
-    TradingHub,
-    #[serde(rename = "INDUSTRIAL")]
-    Industrial,
-    #[serde(rename = "BLACK_MARKET")]
-    BlackMarket,
-    #[serde(rename = "RESEARCH_FACILITY")]
-    ResearchFacility,
-    #[serde(rename = "MILITARY_BASE")]
-    MilitaryBase,
-    #[serde(rename = "SURVEILLANCE_OUTPOST")]
-    SurveillanceOutpost,
-    #[serde(rename = "EXPLORATION_OUTPOST")]
-    ExplorationOutpost,
-    #[serde(rename = "MINERAL_DEPOSITS")]
-    MineralDeposits,
-    #[serde(rename = "COMMON_METAL_DEPOSITS")]
-    CommonMetalDeposits,
-    #[serde(rename = "PRECIOUS_METAL_DEPOSITS")]
-    PreciousMetalDeposits,
-    #[serde(rename = "RARE_METAL_DEPOSITS")]
-    RareMetalDeposits,
-    #[serde(rename = "METHANE_POOLS")]
-    MethanePools,
-    #[serde(rename = "ICE_CRYSTALS")]
-    IceCrystals,
-    #[serde(rename = "EXPLOSIVE_GASES")]
-    ExplosiveGases,
-    #[serde(rename = "STRONG_MAGNETOSPHERE")]
-    StrongMagnetosphere,
-    #[serde(rename = "VIBRANT_AURORAS")]
-    VibrantAuroras,
-    #[serde(rename = "SALT_FLATS")]
-    SaltFlats,
-    #[serde(rename = "CANYONS")]
-    Canyons,
-    #[serde(rename = "PERPETUAL_DAYLIGHT")]
-    PerpetualDaylight,
-    #[serde(rename = "PERPETUAL_OVERCAST")]
-    PerpetualOvercast,
-    #[serde(rename = "DRY_SEABEDS")]
-    DrySeabeds,
-    #[serde(rename = "MAGMA_SEAS")]
-    MagmaSeas,
-    #[serde(rename = "SUPERVOLCANOES")]
-    Supervolcanoes,
-    #[serde(rename = "ASH_CLOUDS")]
-    AshClouds,
-    #[serde(rename = "VAST_RUINS")]
-    VastRuins,
-    #[serde(rename = "MUTATED_FLORA")]
-    MutatedFlora,
-    #[serde(rename = "TERRAFORMED")]
-    Terraformed,
-    #[serde(rename = "EXTREME_TEMPERATURES")]
-    ExtremeTemperatures,
-    #[serde(rename = "EXTREME_PRESSURE")]
-    ExtremePressure,
-    #[serde(rename = "DIVERSE_LIFE")]
-    DiverseLife,
-    #[serde(rename = "SCARCE_LIFE")]
-    ScarceLife,
-    #[serde(rename = "FOSSILS")]
-    Fossils,
-    #[serde(rename = "WEAK_GRAVITY")]
-    WeakGravity,
-    #[serde(rename = "STRONG_GRAVITY")]
-    StrongGravity,
-    #[serde(rename = "CRUSHING_GRAVITY")]
-    CrushingGravity,
-    #[serde(rename = "TOXIC_ATMOSPHERE")]
-    ToxicAtmosphere,
-    #[serde(rename = "CORROSIVE_ATMOSPHERE")]
-    CorrosiveAtmosphere,
-    #[serde(rename = "BREATHABLE_ATMOSPHERE")]
-    BreathableAtmosphere,
-    #[serde(rename = "JOVIAN")]
-    Jovian,
-    #[serde(rename = "ROCKY")]
-    Rocky,
-    #[serde(rename = "VOLCANIC")]
-    Volcanic,
-    #[serde(rename = "FROZEN")]
-    Frozen,
-    #[serde(rename = "SWAMP")]
-    Swamp,
-    #[serde(rename = "BARREN")]
-    Barren,
-    #[serde(rename = "TEMPERATE")]
-    Temperate,
-    #[serde(rename = "JUNGLE")]
-    Jungle,
-    #[serde(rename = "OCEAN")]
-    Ocean,
-    #[serde(rename = "STRIPPED")]
-    Stripped,
-}
-
-impl Default for Symbol {
-    fn default() -> Symbol {
-        Self::Uncharted
-    }
-}
 

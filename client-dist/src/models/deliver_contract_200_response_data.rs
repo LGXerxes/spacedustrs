@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DeliverContract200ResponseData {
     #[serde(rename = "contract")]
     pub contract: Box<crate::models::Contract>,

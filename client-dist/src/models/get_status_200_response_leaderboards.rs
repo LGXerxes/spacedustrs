@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GetStatus200ResponseLeaderboards {
     /// Top agents with the most credits.
     #[serde(rename = "mostCredits")]

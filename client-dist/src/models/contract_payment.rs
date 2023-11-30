@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContractPayment {
     /// The amount of credits received up front for accepting the contract.
     #[serde(rename = "onAccepted")]

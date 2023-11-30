@@ -71,6 +71,8 @@ pub enum TradeSymbol {
     Hydrocarbon,
     #[serde(rename = "ANTIMATTER")]
     Antimatter,
+    #[serde(rename = "FAB_MATS")]
+    FabMats,
     #[serde(rename = "FERTILIZERS")]
     Fertilizers,
     #[serde(rename = "FABRICS")]
@@ -97,6 +99,8 @@ pub enum TradeSymbol {
     Electronics,
     #[serde(rename = "SHIP_PLATING")]
     ShipPlating,
+    #[serde(rename = "SHIP_PARTS")]
+    ShipParts,
     #[serde(rename = "EQUIPMENT")]
     Equipment,
     #[serde(rename = "FUEL")]
@@ -115,6 +119,8 @@ pub enum TradeSymbol {
     Polynucleotides,
     #[serde(rename = "BIOCOMPOSITES")]
     Biocomposites,
+    #[serde(rename = "QUANTUM_STABILIZERS")]
+    QuantumStabilizers,
     #[serde(rename = "NANOBOTS")]
     Nanobots,
     #[serde(rename = "AI_MAINFRAMES")]
@@ -151,6 +157,36 @@ pub enum TradeSymbol {
     BotanicalSpecimens,
     #[serde(rename = "CULTURAL_ARTIFACTS")]
     CulturalArtifacts,
+    #[serde(rename = "FRAME_PROBE")]
+    FrameProbe,
+    #[serde(rename = "FRAME_DRONE")]
+    FrameDrone,
+    #[serde(rename = "FRAME_INTERCEPTOR")]
+    FrameInterceptor,
+    #[serde(rename = "FRAME_RACER")]
+    FrameRacer,
+    #[serde(rename = "FRAME_FIGHTER")]
+    FrameFighter,
+    #[serde(rename = "FRAME_FRIGATE")]
+    FrameFrigate,
+    #[serde(rename = "FRAME_SHUTTLE")]
+    FrameShuttle,
+    #[serde(rename = "FRAME_EXPLORER")]
+    FrameExplorer,
+    #[serde(rename = "FRAME_MINER")]
+    FrameMiner,
+    #[serde(rename = "FRAME_LIGHT_FREIGHTER")]
+    FrameLightFreighter,
+    #[serde(rename = "FRAME_HEAVY_FREIGHTER")]
+    FrameHeavyFreighter,
+    #[serde(rename = "FRAME_TRANSPORT")]
+    FrameTransport,
+    #[serde(rename = "FRAME_DESTROYER")]
+    FrameDestroyer,
+    #[serde(rename = "FRAME_CRUISER")]
+    FrameCruiser,
+    #[serde(rename = "FRAME_CARRIER")]
+    FrameCarrier,
     #[serde(rename = "REACTOR_SOLAR_I")]
     ReactorSolarI,
     #[serde(rename = "REACTOR_FUSION_I")]
@@ -171,8 +207,14 @@ pub enum TradeSymbol {
     EngineHyperDriveI,
     #[serde(rename = "MODULE_MINERAL_PROCESSOR_I")]
     ModuleMineralProcessorI,
+    #[serde(rename = "MODULE_GAS_PROCESSOR_I")]
+    ModuleGasProcessorI,
     #[serde(rename = "MODULE_CARGO_HOLD_I")]
     ModuleCargoHoldI,
+    #[serde(rename = "MODULE_CARGO_HOLD_II")]
+    ModuleCargoHoldIi,
+    #[serde(rename = "MODULE_CARGO_HOLD_III")]
+    ModuleCargoHoldIii,
     #[serde(rename = "MODULE_CREW_QUARTERS_I")]
     ModuleCrewQuartersI,
     #[serde(rename = "MODULE_ENVOY_QUARTERS_I")]
@@ -181,10 +223,6 @@ pub enum TradeSymbol {
     ModulePassengerCabinI,
     #[serde(rename = "MODULE_MICRO_REFINERY_I")]
     ModuleMicroRefineryI,
-    #[serde(rename = "MODULE_ORE_REFINERY_I")]
-    ModuleOreRefineryI,
-    #[serde(rename = "MODULE_FUEL_REFINERY_I")]
-    ModuleFuelRefineryI,
     #[serde(rename = "MODULE_SCIENCE_LAB_I")]
     ModuleScienceLabI,
     #[serde(rename = "MODULE_JUMP_DRIVE_I")]
@@ -203,6 +241,10 @@ pub enum TradeSymbol {
     ModuleShieldGeneratorI,
     #[serde(rename = "MODULE_SHIELD_GENERATOR_II")]
     ModuleShieldGeneratorIi,
+    #[serde(rename = "MODULE_ORE_REFINERY_I")]
+    ModuleOreRefineryI,
+    #[serde(rename = "MODULE_FUEL_REFINERY_I")]
+    ModuleFuelRefineryI,
     #[serde(rename = "MOUNT_GAS_SIPHON_I")]
     MountGasSiphonI,
     #[serde(rename = "MOUNT_GAS_SIPHON_II")]
@@ -233,6 +275,30 @@ pub enum TradeSymbol {
     MountMissileLauncherI,
     #[serde(rename = "MOUNT_TURRET_I")]
     MountTurretI,
+    #[serde(rename = "SHIP_PROBE")]
+    ShipProbe,
+    #[serde(rename = "SHIP_MINING_DRONE")]
+    ShipMiningDrone,
+    #[serde(rename = "SHIP_SIPHON_DRONE")]
+    ShipSiphonDrone,
+    #[serde(rename = "SHIP_INTERCEPTOR")]
+    ShipInterceptor,
+    #[serde(rename = "SHIP_LIGHT_HAULER")]
+    ShipLightHauler,
+    #[serde(rename = "SHIP_COMMAND_FRIGATE")]
+    ShipCommandFrigate,
+    #[serde(rename = "SHIP_EXPLORER")]
+    ShipExplorer,
+    #[serde(rename = "SHIP_HEAVY_FREIGHTER")]
+    ShipHeavyFreighter,
+    #[serde(rename = "SHIP_LIGHT_SHUTTLE")]
+    ShipLightShuttle,
+    #[serde(rename = "SHIP_ORE_HOUND")]
+    ShipOreHound,
+    #[serde(rename = "SHIP_REFINING_FREIGHTER")]
+    ShipRefiningFreighter,
+    #[serde(rename = "SHIP_SURVEYOR")]
+    ShipSurveyor,
 
 }
 
@@ -268,6 +334,7 @@ impl ToString for TradeSymbol {
             Self::MeritiumOre => String::from("MERITIUM_ORE"),
             Self::Hydrocarbon => String::from("HYDROCARBON"),
             Self::Antimatter => String::from("ANTIMATTER"),
+            Self::FabMats => String::from("FAB_MATS"),
             Self::Fertilizers => String::from("FERTILIZERS"),
             Self::Fabrics => String::from("FABRICS"),
             Self::Food => String::from("FOOD"),
@@ -281,6 +348,7 @@ impl ToString for TradeSymbol {
             Self::Ammunition => String::from("AMMUNITION"),
             Self::Electronics => String::from("ELECTRONICS"),
             Self::ShipPlating => String::from("SHIP_PLATING"),
+            Self::ShipParts => String::from("SHIP_PARTS"),
             Self::Equipment => String::from("EQUIPMENT"),
             Self::Fuel => String::from("FUEL"),
             Self::Medicine => String::from("MEDICINE"),
@@ -290,6 +358,7 @@ impl ToString for TradeSymbol {
             Self::Plastics => String::from("PLASTICS"),
             Self::Polynucleotides => String::from("POLYNUCLEOTIDES"),
             Self::Biocomposites => String::from("BIOCOMPOSITES"),
+            Self::QuantumStabilizers => String::from("QUANTUM_STABILIZERS"),
             Self::Nanobots => String::from("NANOBOTS"),
             Self::AiMainframes => String::from("AI_MAINFRAMES"),
             Self::QuantumDrives => String::from("QUANTUM_DRIVES"),
@@ -308,6 +377,21 @@ impl ToString for TradeSymbol {
             Self::NovelLifeforms => String::from("NOVEL_LIFEFORMS"),
             Self::BotanicalSpecimens => String::from("BOTANICAL_SPECIMENS"),
             Self::CulturalArtifacts => String::from("CULTURAL_ARTIFACTS"),
+            Self::FrameProbe => String::from("FRAME_PROBE"),
+            Self::FrameDrone => String::from("FRAME_DRONE"),
+            Self::FrameInterceptor => String::from("FRAME_INTERCEPTOR"),
+            Self::FrameRacer => String::from("FRAME_RACER"),
+            Self::FrameFighter => String::from("FRAME_FIGHTER"),
+            Self::FrameFrigate => String::from("FRAME_FRIGATE"),
+            Self::FrameShuttle => String::from("FRAME_SHUTTLE"),
+            Self::FrameExplorer => String::from("FRAME_EXPLORER"),
+            Self::FrameMiner => String::from("FRAME_MINER"),
+            Self::FrameLightFreighter => String::from("FRAME_LIGHT_FREIGHTER"),
+            Self::FrameHeavyFreighter => String::from("FRAME_HEAVY_FREIGHTER"),
+            Self::FrameTransport => String::from("FRAME_TRANSPORT"),
+            Self::FrameDestroyer => String::from("FRAME_DESTROYER"),
+            Self::FrameCruiser => String::from("FRAME_CRUISER"),
+            Self::FrameCarrier => String::from("FRAME_CARRIER"),
             Self::ReactorSolarI => String::from("REACTOR_SOLAR_I"),
             Self::ReactorFusionI => String::from("REACTOR_FUSION_I"),
             Self::ReactorFissionI => String::from("REACTOR_FISSION_I"),
@@ -318,13 +402,14 @@ impl ToString for TradeSymbol {
             Self::EngineIonDriveIi => String::from("ENGINE_ION_DRIVE_II"),
             Self::EngineHyperDriveI => String::from("ENGINE_HYPER_DRIVE_I"),
             Self::ModuleMineralProcessorI => String::from("MODULE_MINERAL_PROCESSOR_I"),
+            Self::ModuleGasProcessorI => String::from("MODULE_GAS_PROCESSOR_I"),
             Self::ModuleCargoHoldI => String::from("MODULE_CARGO_HOLD_I"),
+            Self::ModuleCargoHoldIi => String::from("MODULE_CARGO_HOLD_II"),
+            Self::ModuleCargoHoldIii => String::from("MODULE_CARGO_HOLD_III"),
             Self::ModuleCrewQuartersI => String::from("MODULE_CREW_QUARTERS_I"),
             Self::ModuleEnvoyQuartersI => String::from("MODULE_ENVOY_QUARTERS_I"),
             Self::ModulePassengerCabinI => String::from("MODULE_PASSENGER_CABIN_I"),
             Self::ModuleMicroRefineryI => String::from("MODULE_MICRO_REFINERY_I"),
-            Self::ModuleOreRefineryI => String::from("MODULE_ORE_REFINERY_I"),
-            Self::ModuleFuelRefineryI => String::from("MODULE_FUEL_REFINERY_I"),
             Self::ModuleScienceLabI => String::from("MODULE_SCIENCE_LAB_I"),
             Self::ModuleJumpDriveI => String::from("MODULE_JUMP_DRIVE_I"),
             Self::ModuleJumpDriveIi => String::from("MODULE_JUMP_DRIVE_II"),
@@ -334,6 +419,8 @@ impl ToString for TradeSymbol {
             Self::ModuleWarpDriveIii => String::from("MODULE_WARP_DRIVE_III"),
             Self::ModuleShieldGeneratorI => String::from("MODULE_SHIELD_GENERATOR_I"),
             Self::ModuleShieldGeneratorIi => String::from("MODULE_SHIELD_GENERATOR_II"),
+            Self::ModuleOreRefineryI => String::from("MODULE_ORE_REFINERY_I"),
+            Self::ModuleFuelRefineryI => String::from("MODULE_FUEL_REFINERY_I"),
             Self::MountGasSiphonI => String::from("MOUNT_GAS_SIPHON_I"),
             Self::MountGasSiphonIi => String::from("MOUNT_GAS_SIPHON_II"),
             Self::MountGasSiphonIii => String::from("MOUNT_GAS_SIPHON_III"),
@@ -349,6 +436,18 @@ impl ToString for TradeSymbol {
             Self::MountLaserCannonI => String::from("MOUNT_LASER_CANNON_I"),
             Self::MountMissileLauncherI => String::from("MOUNT_MISSILE_LAUNCHER_I"),
             Self::MountTurretI => String::from("MOUNT_TURRET_I"),
+            Self::ShipProbe => String::from("SHIP_PROBE"),
+            Self::ShipMiningDrone => String::from("SHIP_MINING_DRONE"),
+            Self::ShipSiphonDrone => String::from("SHIP_SIPHON_DRONE"),
+            Self::ShipInterceptor => String::from("SHIP_INTERCEPTOR"),
+            Self::ShipLightHauler => String::from("SHIP_LIGHT_HAULER"),
+            Self::ShipCommandFrigate => String::from("SHIP_COMMAND_FRIGATE"),
+            Self::ShipExplorer => String::from("SHIP_EXPLORER"),
+            Self::ShipHeavyFreighter => String::from("SHIP_HEAVY_FREIGHTER"),
+            Self::ShipLightShuttle => String::from("SHIP_LIGHT_SHUTTLE"),
+            Self::ShipOreHound => String::from("SHIP_ORE_HOUND"),
+            Self::ShipRefiningFreighter => String::from("SHIP_REFINING_FREIGHTER"),
+            Self::ShipSurveyor => String::from("SHIP_SURVEYOR"),
         }
     }
 }

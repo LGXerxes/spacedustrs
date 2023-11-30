@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipFuelConsumed {
     /// The amount of fuel consumed by the most recent transit or action.
     #[serde(rename = "amount")]

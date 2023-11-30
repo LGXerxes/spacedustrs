@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipModule {
     /// The symbol of the module.
     #[serde(rename = "symbol")]
@@ -52,8 +52,14 @@ impl ShipModule {
 pub enum Symbol {
     #[serde(rename = "MODULE_MINERAL_PROCESSOR_I")]
     MineralProcessorI,
+    #[serde(rename = "MODULE_GAS_PROCESSOR_I")]
+    GasProcessorI,
     #[serde(rename = "MODULE_CARGO_HOLD_I")]
     CargoHoldI,
+    #[serde(rename = "MODULE_CARGO_HOLD_II")]
+    CargoHoldIi,
+    #[serde(rename = "MODULE_CARGO_HOLD_III")]
+    CargoHoldIii,
     #[serde(rename = "MODULE_CREW_QUARTERS_I")]
     CrewQuartersI,
     #[serde(rename = "MODULE_ENVOY_QUARTERS_I")]

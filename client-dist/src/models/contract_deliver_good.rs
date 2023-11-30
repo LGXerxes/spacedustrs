@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContractDeliverGood {
     /// The symbol of the trade good to deliver.
     #[serde(rename = "tradeSymbol")]

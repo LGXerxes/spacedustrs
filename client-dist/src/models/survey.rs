@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Survey {
     /// A unique signature for the location of this survey. This signature is verified when attempting an extraction using this survey.
     #[serde(rename = "signature")]
@@ -20,7 +20,7 @@ pub struct Survey {
     /// The symbol of the waypoint that this survey is for.
     #[serde(rename = "symbol")]
     pub symbol: String,
-    /// A list of deposits that can be found at this location.
+    /// A list of deposits that can be found at this location. A ship will extract one of these deposits when using this survey in an extraction request. If multiple deposits of the same type are present, the chance of extracting that deposit is increased.
     #[serde(rename = "deposits")]
     pub deposits: Vec<crate::models::SurveyDeposit>,
     /// The date and time when the survey expires. After this date and time, the survey will no longer be available for extraction.

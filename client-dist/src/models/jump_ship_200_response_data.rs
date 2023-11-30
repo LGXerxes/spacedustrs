@@ -11,19 +11,22 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JumpShip200ResponseData {
-    #[serde(rename = "cooldown")]
-    pub cooldown: Box<crate::models::Cooldown>,
     #[serde(rename = "nav")]
     pub nav: Box<crate::models::ShipNav>,
+    #[serde(rename = "cooldown")]
+    pub cooldown: Box<crate::models::Cooldown>,
+    #[serde(rename = "transaction")]
+    pub transaction: Box<crate::models::MarketTransaction>,
 }
 
 impl JumpShip200ResponseData {
-    pub fn new(cooldown: crate::models::Cooldown, nav: crate::models::ShipNav) -> JumpShip200ResponseData {
+    pub fn new(nav: crate::models::ShipNav, cooldown: crate::models::Cooldown, transaction: crate::models::MarketTransaction) -> JumpShip200ResponseData {
         JumpShip200ResponseData {
-            cooldown: Box::new(cooldown),
             nav: Box::new(nav),
+            cooldown: Box::new(cooldown),
+            transaction: Box::new(transaction),
         }
     }
 }

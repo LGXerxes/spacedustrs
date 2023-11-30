@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Cooldown {
     /// The symbol of the ship that is on cooldown
     #[serde(rename = "shipSymbol")]

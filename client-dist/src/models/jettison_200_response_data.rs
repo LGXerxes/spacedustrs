@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Jettison200ResponseData {
     #[serde(rename = "cargo")]
     pub cargo: Box<crate::models::ShipCargo>,

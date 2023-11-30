@@ -25,12 +25,22 @@ pub enum WaypointType {
     JumpGate,
     #[serde(rename = "ASTEROID_FIELD")]
     AsteroidField,
+    #[serde(rename = "ASTEROID")]
+    Asteroid,
+    #[serde(rename = "ENGINEERED_ASTEROID")]
+    EngineeredAsteroid,
+    #[serde(rename = "ASTEROID_BASE")]
+    AsteroidBase,
     #[serde(rename = "NEBULA")]
     Nebula,
     #[serde(rename = "DEBRIS_FIELD")]
     DebrisField,
     #[serde(rename = "GRAVITY_WELL")]
     GravityWell,
+    #[serde(rename = "ARTIFICIAL_GRAVITY_WELL")]
+    ArtificialGravityWell,
+    #[serde(rename = "FUEL_STATION")]
+    FuelStation,
 
 }
 
@@ -43,9 +53,14 @@ impl ToString for WaypointType {
             Self::OrbitalStation => String::from("ORBITAL_STATION"),
             Self::JumpGate => String::from("JUMP_GATE"),
             Self::AsteroidField => String::from("ASTEROID_FIELD"),
+            Self::Asteroid => String::from("ASTEROID"),
+            Self::EngineeredAsteroid => String::from("ENGINEERED_ASTEROID"),
+            Self::AsteroidBase => String::from("ASTEROID_BASE"),
             Self::Nebula => String::from("NEBULA"),
             Self::DebrisField => String::from("DEBRIS_FIELD"),
             Self::GravityWell => String::from("GRAVITY_WELL"),
+            Self::ArtificialGravityWell => String::from("ARTIFICIAL_GRAVITY_WELL"),
+            Self::FuelStation => String::from("FUEL_STATION"),
         }
     }
 }

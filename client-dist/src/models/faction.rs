@@ -12,10 +12,10 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Faction {
     #[serde(rename = "symbol")]
-    pub symbol: crate::models::FactionSymbols,
+    pub symbol: crate::models::FactionSymbol,
     /// Name of the faction.
     #[serde(rename = "name")]
     pub name: String,
@@ -35,7 +35,7 @@ pub struct Faction {
 
 impl Faction {
     /// Faction details.
-    pub fn new(symbol: crate::models::FactionSymbols, name: String, description: String, headquarters: String, traits: Vec<crate::models::FactionTrait>, is_recruiting: bool) -> Faction {
+    pub fn new(symbol: crate::models::FactionSymbol, name: String, description: String, headquarters: String, traits: Vec<crate::models::FactionTrait>, is_recruiting: bool) -> Faction {
         Faction {
             symbol,
             name,

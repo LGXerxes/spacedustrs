@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Waypoint {
     /// Symbol fo the waypoint.
     #[serde(rename = "symbol")]
@@ -22,27 +22,36 @@ pub struct Waypoint {
     /// The symbol of the system this waypoint belongs to.
     #[serde(rename = "systemSymbol")]
     pub system_symbol: String,
-    /// Position in the universe in the x axis.
+    /// Relative position of the waypoint on the system's x axis. This is not an absolute position in the universe.
     #[serde(rename = "x")]
     pub x: i32,
-    /// Position in the universe in the Y axis.
+    /// Relative position of the waypoint on the system's y axis. This is not an absolute position in the universe.
     #[serde(rename = "y")]
     pub y: i32,
     /// Waypoints that orbit this waypoint.
     #[serde(rename = "orbitals")]
     pub orbitals: Vec<crate::models::WaypointOrbital>,
+    /// The symbol of the parent waypoint, if this waypoint is in orbit around another waypoint. Otherwise this value is undefined.
+    #[serde(rename = "orbits", skip_serializing_if = "Option::is_none")]
+    pub orbits: Option<String>,
     #[serde(rename = "faction", skip_serializing_if = "Option::is_none")]
     pub faction: Option<Box<crate::models::WaypointFaction>>,
     /// The traits of the waypoint.
     #[serde(rename = "traits")]
     pub traits: Vec<crate::models::WaypointTrait>,
+    /// The modifiers of the waypoint.
+    #[serde(rename = "modifiers", skip_serializing_if = "Option::is_none")]
+    pub modifiers: Option<Vec<crate::models::WaypointModifier>>,
     #[serde(rename = "chart", skip_serializing_if = "Option::is_none")]
     pub chart: Option<Box<crate::models::Chart>>,
+    /// True if the waypoint is under construction.
+    #[serde(rename = "isUnderConstruction")]
+    pub is_under_construction: bool,
 }
 
 impl Waypoint {
     /// A waypoint is a location that ships can travel to such as a Planet, Moon or Space Station.
-    pub fn new(symbol: String, r#type: crate::models::WaypointType, system_symbol: String, x: i32, y: i32, orbitals: Vec<crate::models::WaypointOrbital>, traits: Vec<crate::models::WaypointTrait>) -> Waypoint {
+    pub fn new(symbol: String, r#type: crate::models::WaypointType, system_symbol: String, x: i32, y: i32, orbitals: Vec<crate::models::WaypointOrbital>, traits: Vec<crate::models::WaypointTrait>, is_under_construction: bool) -> Waypoint {
         Waypoint {
             symbol,
             r#type,
@@ -50,9 +59,12 @@ impl Waypoint {
             x,
             y,
             orbitals,
+            orbits: None,
             faction: None,
             traits,
+            modifiers: None,
             chart: None,
+            is_under_construction,
         }
     }
 }

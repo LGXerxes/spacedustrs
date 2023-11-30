@@ -11,21 +11,21 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipRefine201ResponseDataProducedInner {
     /// Symbol of the good.
-    #[serde(rename = "tradeSymbol", skip_serializing_if = "Option::is_none")]
-    pub trade_symbol: Option<String>,
+    #[serde(rename = "tradeSymbol")]
+    pub trade_symbol: String,
     /// Amount of units of the good.
-    #[serde(rename = "units", skip_serializing_if = "Option::is_none")]
-    pub units: Option<i32>,
+    #[serde(rename = "units")]
+    pub units: i32,
 }
 
 impl ShipRefine201ResponseDataProducedInner {
-    pub fn new() -> ShipRefine201ResponseDataProducedInner {
+    pub fn new(trade_symbol: String, units: i32) -> ShipRefine201ResponseDataProducedInner {
         ShipRefine201ResponseDataProducedInner {
-            trade_symbol: None,
-            units: None,
+            trade_symbol,
+            units,
         }
     }
 }

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**create_survey**](FleetApi.md#create_survey) | **POST** /my/ships/{shipSymbol}/survey | Create Survey
 [**dock_ship**](FleetApi.md#dock_ship) | **POST** /my/ships/{shipSymbol}/dock | Dock Ship
 [**extract_resources**](FleetApi.md#extract_resources) | **POST** /my/ships/{shipSymbol}/extract | Extract Resources
+[**extract_resources_with_survey**](FleetApi.md#extract_resources_with_survey) | **POST** /my/ships/{shipSymbol}/extract/survey | Extract Resources with Survey
 [**get_mounts**](FleetApi.md#get_mounts) | **GET** /my/ships/{shipSymbol}/mounts | Get Mounts
 [**get_my_ship**](FleetApi.md#get_my_ship) | **GET** /my/ships/{shipSymbol} | Get Ship
 [**get_my_ship_cargo**](FleetApi.md#get_my_ship_cargo) | **GET** /my/ships/{shipSymbol}/cargo | Get Ship Cargo
@@ -30,6 +31,7 @@ Method | HTTP request | Description
 [**remove_mount**](FleetApi.md#remove_mount) | **POST** /my/ships/{shipSymbol}/mounts/remove | Remove Mount
 [**sell_cargo**](FleetApi.md#sell_cargo) | **POST** /my/ships/{shipSymbol}/sell | Sell Cargo
 [**ship_refine**](FleetApi.md#ship_refine) | **POST** /my/ships/{shipSymbol}/refine | Ship Refine
+[**siphon_resources**](FleetApi.md#siphon_resources) | **POST** /my/ships/{shipSymbol}/siphon | Siphon Resources
 [**transfer_cargo**](FleetApi.md#transfer_cargo) | **POST** /my/ships/{shipSymbol}/transfer | Transfer Cargo
 [**warp_ship**](FleetApi.md#warp_ship) | **POST** /my/ships/{shipSymbol}/warp | Warp Ship
 
@@ -220,7 +222,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ExtractResources201Response extract_resources(ship_symbol, extract_resources_request)
 Extract Resources
 
-Extract resources from a waypoint that can be extracted, such as asteroid fields, into your ship. Send an optional survey as the payload to target specific yields.  The ship must be in orbit to be able to extract and must have mining equipments installed that can extract goods, such as the `Gas Siphon` mount for gas-based goods or `Mining Laser` mount for ore-based goods.
+Extract resources from a waypoint that can be extracted, such as asteroid fields, into your ship. Send an optional survey as the payload to target specific yields.  The ship must be in orbit to be able to extract and must have mining equipments installed that can extract goods, such as the `Gas Siphon` mount for gas-based goods or `Mining Laser` mount for ore-based goods.  The survey property is now deprecated. See the `extract/survey` endpoint for more details.
 
 ### Parameters
 
@@ -229,6 +231,37 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ship_symbol** | **String** | The ship symbol. | [required] |
 **extract_resources_request** | Option<[**ExtractResourcesRequest**](ExtractResourcesRequest.md)> |  |  |
+
+### Return type
+
+[**crate::models::ExtractResources201Response**](extract_resources_201_response.md)
+
+### Authorization
+
+[AgentToken](../README.md#AgentToken)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## extract_resources_with_survey
+
+> crate::models::ExtractResources201Response extract_resources_with_survey(ship_symbol, survey)
+Extract Resources with Survey
+
+Use a survey when extracting resources from a waypoint. This endpoint requires a survey as the payload, which allows your ship to extract specific yields.  Send the full survey object as the payload which will be validated according to the signature. If the signature is invalid, or any properties of the survey are changed, the request will fail.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**ship_symbol** | **String** | The ship symbol. | [required] |
+**survey** | Option<[**Survey**](Survey.md)> |  |  |
 
 ### Return type
 
@@ -494,7 +527,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::JumpShip200Response jump_ship(ship_symbol, jump_ship_request)
 Jump Ship
 
-Jump your ship instantly to a target system. The ship must be in orbit to use this function. When used while in orbit of a Jump Gate waypoint, any ship can use this command, jumping to the target system's Jump Gate waypoint.  When used elsewhere, jumping requires the ship to have a `Jump Drive` module installed and consumes a unit of antimatter from the ship's cargo. The command will fail if there is no antimatter to consume. When jumping via the `Jump Drive` module, the ship ends up at its largest source of energy in the system, such as a gas planet or a jump gate.
+Jump your ship instantly to a target connected waypoint. The ship must be in orbit to execute a jump.  A unit of antimatter is purchased and consumed from the market when jumping. The price of antimatter is determined by the market and is subject to change. A ship can only jump to connected waypoints
 
 ### Parameters
 
@@ -556,7 +589,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::NegotiateContract200Response negotiate_contract(ship_symbol)
 Negotiate Contract
 
-Negotiate a new contract with the HQ.  In order to negotiate a new contract, an agent must not have ongoing or offered contracts over the allowed maximum amount. Currently the maximum contracts an agent can have at a time is 1.  Once a contract is negotiated, it is added to the list of contracts offered to the agent, which the agent can then accept.   The ship must be present at a faction's HQ waypoint to negotiate a contract with that faction.
+Negotiate a new contract with the HQ.  In order to negotiate a new contract, an agent must not have ongoing or offered contracts over the allowed maximum amount. Currently the maximum contracts an agent can have at a time is 1.  Once a contract is negotiated, it is added to the list of contracts offered to the agent, which the agent can then accept.   The ship must be present at any waypoint with a faction present to negotiate a contract with that faction.
 
 ### Parameters
 
@@ -822,6 +855,36 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## siphon_resources
+
+> crate::models::SiphonResources201Response siphon_resources(ship_symbol)
+Siphon Resources
+
+Siphon gases, such as hydrocarbon, from gas giants.  The ship must be in orbit to be able to siphon and must have siphon mounts and a gas processor installed.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**ship_symbol** | **String** | The ship symbol. | [required] |
+
+### Return type
+
+[**crate::models::SiphonResources201Response**](siphon_resources_201_response.md)
+
+### Authorization
+
+[AgentToken](../README.md#AgentToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

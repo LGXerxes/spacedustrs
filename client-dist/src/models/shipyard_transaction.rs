@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipyardTransaction {
     /// The symbol of the waypoint where the transaction took place.
     #[serde(rename = "waypointSymbol")]

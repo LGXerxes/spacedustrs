@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JumpShip200Response {
     #[serde(rename = "data")]
     pub data: Box<crate::models::JumpShip200ResponseData>,

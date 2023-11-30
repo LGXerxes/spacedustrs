@@ -1,4 +1,4 @@
 [submodule "spacetraders-api-docs"]
-	path = spacetraders-api-docs-spacedust-patch
-	url = https://github.com/spacetraders-rs/api-docs-spacedust-patch.git
+	path = api-docs
+	url = https://github.com/SpaceTradersAPI/api-docs.git
 	branch = main

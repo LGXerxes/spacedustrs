@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ExtractResources201ResponseData {
     #[serde(rename = "cooldown")]
     pub cooldown: Box<crate::models::Cooldown>,

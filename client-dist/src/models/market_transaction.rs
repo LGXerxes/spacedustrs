@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MarketTransaction {
     /// The symbol of the waypoint where the transaction took place.
     #[serde(rename = "waypointSymbol")]
@@ -25,7 +25,7 @@ pub struct MarketTransaction {
     pub trade_symbol: String,
     /// The type of transaction.
     #[serde(rename = "type")]
-    pub r#type: RHashType,
+    pub r#type: Type,
     /// The number of units of the transaction.
     #[serde(rename = "units")]
     pub units: i32,
@@ -42,7 +42,7 @@ pub struct MarketTransaction {
 
 impl MarketTransaction {
     /// Result of a transaction with a market.
-    pub fn new(waypoint_symbol: String, ship_symbol: String, trade_symbol: String, r#type: RHashType, units: i32, price_per_unit: i32, total_price: i32, timestamp: String) -> MarketTransaction {
+    pub fn new(waypoint_symbol: String, ship_symbol: String, trade_symbol: String, r#type: Type, units: i32, price_per_unit: i32, total_price: i32, timestamp: String) -> MarketTransaction {
         MarketTransaction {
             waypoint_symbol,
             ship_symbol,
@@ -58,15 +58,15 @@ impl MarketTransaction {
 
 /// The type of transaction.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum RHashType {
+pub enum Type {
     #[serde(rename = "PURCHASE")]
     Purchase,
     #[serde(rename = "SELL")]
     Sell,
 }
 
-impl Default for RHashType {
-    fn default() -> RHashType {
+impl Default for Type {
+    fn default() -> Type {
         Self::Purchase
     }
 }

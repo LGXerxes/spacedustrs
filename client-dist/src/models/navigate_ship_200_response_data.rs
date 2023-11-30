@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NavigateShip200ResponseData {
     #[serde(rename = "fuel")]
     pub fuel: Box<crate::models::ShipFuel>,

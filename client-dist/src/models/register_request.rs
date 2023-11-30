@@ -11,10 +11,10 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RegisterRequest {
     #[serde(rename = "faction")]
-    pub faction: crate::models::FactionSymbols,
+    pub faction: crate::models::FactionSymbol,
     /// Your desired agent symbol. This will be a unique name used to represent your agent, and will be the prefix for your ships.
     #[serde(rename = "symbol")]
     pub symbol: String,
@@ -24,7 +24,7 @@ pub struct RegisterRequest {
 }
 
 impl RegisterRequest {
-    pub fn new(faction: crate::models::FactionSymbols, symbol: String) -> RegisterRequest {
+    pub fn new(faction: crate::models::FactionSymbol, symbol: String) -> RegisterRequest {
         RegisterRequest {
             faction,
             symbol,

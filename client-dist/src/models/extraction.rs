@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Extraction {
     /// Symbol of the ship that executed the extraction.
     #[serde(rename = "shipSymbol")]

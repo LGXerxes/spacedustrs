@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | [**crate::models::FactionSymbols**](FactionSymbols.md) |  | 
+**symbol** | [**crate::models::FactionSymbol**](FactionSymbol.md) |  | 
 **name** | **String** | Name of the faction. | 
 **description** | **String** | Description of the faction. | 
 **headquarters** | **String** | The waypoint in which the faction's HQ is located in. | 

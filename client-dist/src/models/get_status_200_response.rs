@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GetStatus200Response {
     /// The current status of the game server.
     #[serde(rename = "status")]
@@ -19,7 +19,7 @@ pub struct GetStatus200Response {
     /// The current version of the API.
     #[serde(rename = "version")]
     pub version: String,
-    /// The date and time when the game server was last reset.
+    /// The date when the game server was last reset.
     #[serde(rename = "resetDate")]
     pub reset_date: String,
     #[serde(rename = "description")]

@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GetStatus200ResponseServerResets {
     /// The date and time when the game server will reset.
     #[serde(rename = "next")]

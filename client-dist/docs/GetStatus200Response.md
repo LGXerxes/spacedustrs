@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **String** | The current status of the game server. | 
 **version** | **String** | The current version of the API. | 
-**reset_date** | **String** | The date and time when the game server was last reset. | 
+**reset_date** | **String** | The date when the game server was last reset. | 
 **description** | **String** |  | 
 **stats** | [**crate::models::GetStatus200ResponseStats**](get_status_200_response_stats.md) |  | 
 **leaderboards** | [**crate::models::GetStatus200ResponseLeaderboards**](get_status_200_response_leaderboards.md) |  | 

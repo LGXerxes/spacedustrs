@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **frame** | [**crate::models::ShipFrame**](ShipFrame.md) |  | 
 **reactor** | [**crate::models::ShipReactor**](ShipReactor.md) |  | 
 **engine** | [**crate::models::ShipEngine**](ShipEngine.md) |  | 
+**cooldown** | [**crate::models::Cooldown**](Cooldown.md) |  | 
 **modules** | [**Vec<crate::models::ShipModule>**](ShipModule.md) | Modules installed in this ship. | 
 **mounts** | [**Vec<crate::models::ShipMount>**](ShipMount.md) | Mounts installed in this ship. | 
 **cargo** | [**crate::models::ShipCargo**](ShipCargo.md) |  | 

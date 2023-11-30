@@ -12,7 +12,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Ship {
     /// The globally unique identifier of the ship in the following format: `[AGENT_SYMBOL]-[HEX_ID]`
     #[serde(rename = "symbol")]
@@ -29,6 +29,8 @@ pub struct Ship {
     pub reactor: Box<crate::models::ShipReactor>,
     #[serde(rename = "engine")]
     pub engine: Box<crate::models::ShipEngine>,
+    #[serde(rename = "cooldown")]
+    pub cooldown: Box<crate::models::Cooldown>,
     /// Modules installed in this ship.
     #[serde(rename = "modules")]
     pub modules: Vec<crate::models::ShipModule>,
@@ -43,7 +45,7 @@ pub struct Ship {
 
 impl Ship {
     /// Ship details.
-    pub fn new(symbol: String, registration: crate::models::ShipRegistration, nav: crate::models::ShipNav, crew: crate::models::ShipCrew, frame: crate::models::ShipFrame, reactor: crate::models::ShipReactor, engine: crate::models::ShipEngine, modules: Vec<crate::models::ShipModule>, mounts: Vec<crate::models::ShipMount>, cargo: crate::models::ShipCargo, fuel: crate::models::ShipFuel) -> Ship {
+    pub fn new(symbol: String, registration: crate::models::ShipRegistration, nav: crate::models::ShipNav, crew: crate::models::ShipCrew, frame: crate::models::ShipFrame, reactor: crate::models::ShipReactor, engine: crate::models::ShipEngine, cooldown: crate::models::Cooldown, modules: Vec<crate::models::ShipModule>, mounts: Vec<crate::models::ShipMount>, cargo: crate::models::ShipCargo, fuel: crate::models::ShipFuel) -> Ship {
         Ship {
             symbol,
             registration: Box::new(registration),
@@ -52,6 +54,7 @@ impl Ship {
             frame: Box::new(frame),
             reactor: Box::new(reactor),
             engine: Box::new(engine),
+            cooldown: Box::new(cooldown),
             modules,
             mounts,
             cargo: Box::new(cargo),

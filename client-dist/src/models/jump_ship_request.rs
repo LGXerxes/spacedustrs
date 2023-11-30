@@ -11,17 +11,17 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JumpShipRequest {
-    /// The system symbol to jump to.
-    #[serde(rename = "systemSymbol")]
-    pub system_symbol: String,
+    /// The symbol of the waypoint to jump to. The destination must be a connected waypoint.
+    #[serde(rename = "waypointSymbol")]
+    pub waypoint_symbol: String,
 }
 
 impl JumpShipRequest {
-    pub fn new(system_symbol: String) -> JumpShipRequest {
+    pub fn new(waypoint_symbol: String) -> JumpShipRequest {
         JumpShipRequest {
-            system_symbol,
+            waypoint_symbol,
         }
     }
 }

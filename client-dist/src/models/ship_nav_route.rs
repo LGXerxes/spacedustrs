@@ -12,12 +12,14 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ShipNavRoute {
     #[serde(rename = "destination")]
     pub destination: Box<crate::models::ShipNavRouteWaypoint>,
     #[serde(rename = "departure")]
     pub departure: Box<crate::models::ShipNavRouteWaypoint>,
+    #[serde(rename = "origin")]
+    pub origin: Box<crate::models::ShipNavRouteWaypoint>,
     /// The date time of the ship's departure.
     #[serde(rename = "departureTime")]
     pub departure_time: String,
@@ -28,10 +30,11 @@ pub struct ShipNavRoute {
 
 impl ShipNavRoute {
     /// The routing information for the ship's most recent transit or current location.
-    pub fn new(destination: crate::models::ShipNavRouteWaypoint, departure: crate::models::ShipNavRouteWaypoint, departure_time: String, arrival: String) -> ShipNavRoute {
+    pub fn new(destination: crate::models::ShipNavRouteWaypoint, departure: crate::models::ShipNavRouteWaypoint, origin: crate::models::ShipNavRouteWaypoint, departure_time: String, arrival: String) -> ShipNavRoute {
         ShipNavRoute {
             destination: Box::new(destination),
             departure: Box::new(departure),
+            origin: Box::new(origin),
             departure_time,
             arrival,
         }

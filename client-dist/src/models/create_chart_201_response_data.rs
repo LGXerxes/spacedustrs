@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateChart201ResponseData {
     #[serde(rename = "chart")]
     pub chart: Box<crate::models::Chart>,
